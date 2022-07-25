@@ -1,9 +1,14 @@
 import React from 'react'
+import Footer from '../Shared/Footer'
+import Banner from './Banner/Banner'
+import Features from './FeaturePart/Features'
 
 export default function Home() {
   return (
-    <div>
-        <h1 className="text-secondary">This is home</h1>
-    </div>
+    <>
+      <Banner />
+      <Features />
+      <Footer />
+    </>
   )
 }

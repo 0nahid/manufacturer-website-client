@@ -33,6 +33,7 @@ export default function App() {
                     <Route path="/reset-password" element={<ResetPassword />} />
 
                 </Routes>
+
                 <Toaster />
             </div>
         </div>

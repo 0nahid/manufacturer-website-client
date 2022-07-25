@@ -23,14 +23,17 @@ export default function Navbar() {
             <Link to="/">Home</Link>
             <Link to="/shop">Shop</Link>
             <Link to="/blogs">Blogs</Link>
+            {
+                user && <Link to="/portfolio">Portfolio</Link>
+            }
             <Link to="/contact">Contact</Link>
             {
                 user && <Link to="/dashboard">Dashboard</Link>
             }
             {
                 user ? <button
-                onClick={logout}
-                class="btn btn-primary">Logout</button> : <Link to="/login">Login</Link>
+                    onClick={logout}
+                    class="btn btn-primary">Logout</button> : <Link to="/login">Login</Link>
             }
         </li>
     )
@@ -46,12 +49,17 @@ export default function Navbar() {
                             {Navmenu}
                         </ul>
                     </div>
-                    <Link to="/" class="btn btn-ghost normal-case text-2xl font-bold">Car parts</Link>
+                    <div class="hidden lg:flex">
+                        <Link to="/" class="btn btn-ghost normal-case text-2xl font-bold">Car parts</Link>
+                    </div>
                 </div>
                 <div class="navbar-center hidden lg:flex">
                     <ul class="menu menu-horizontal p-0">
                         {Navmenu}
                     </ul>
+                </div>
+                <div className="navbar-end flex lg:hidden">
+                    <Link to="/" class="btn btn-ghost normal-case text-2xl font-bold">Car Parts</Link>
                 </div>
             </div>
         </>
