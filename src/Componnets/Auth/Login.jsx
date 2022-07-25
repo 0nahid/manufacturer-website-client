@@ -22,7 +22,7 @@ export default function Login() {
     let from = location.state?.from?.pathname || "/";
     const [user] = useAuthState(auth);
     const onSubmit = (data) => {
-        console.log(data)
+        // console.log(data)
         signInWithEmailAndPassword(data.mail, data.password);
     };
     if (user) {
