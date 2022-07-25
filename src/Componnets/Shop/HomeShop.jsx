@@ -1,0 +1,23 @@
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import React from 'react';
+import Loading from '../Shared/Loading';
+import HomeShopData from './HomeShopData';
+export default function HomeShop() {
+    const { data, refetch, isLoading } = useQuery(['available',], () => axios.get(`http://localhost:5500/api/services`))
+    console.log(data?.data);
+
+    if (isLoading) {
+        <Loading />
+    }
+    return (
+        <>
+            <h1 className="text-center font-bold m-10 text-3xl text-primary">Parts We Provide</h1>
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 justify-items-center mt-5">
+                {
+                    data?.data?.slice(0, 4).map((service, index) => <HomeShopData key={index} service={service} />)
+                }
+            </div>
+        </>
+    )
+}
