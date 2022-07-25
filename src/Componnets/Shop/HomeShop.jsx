@@ -4,8 +4,8 @@ import React from 'react';
 import Loading from '../Shared/Loading';
 import HomeShopData from './HomeShopData';
 export default function HomeShop() {
-    const { data, refetch, isLoading } = useQuery(['available',], () => axios.get(`http://localhost:5500/api/services`))
-    console.log(data?.data);
+    const { data, isLoading } = useQuery(['available',], () => axios.get(`http://localhost:5500/api/services`))
+    // console.log(data?.data);
 
     if (isLoading) {
         <Loading />

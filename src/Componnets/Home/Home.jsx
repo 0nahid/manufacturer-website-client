@@ -1,5 +1,6 @@
 import React from 'react'
 import Footer from '../Shared/Footer'
+import NewsLetter from '../Shared/NewsLetter'
 import HomeShop from '../Shop/HomeShop'
 import Banner from './Banner/Banner'
 import FeatureMust from './FeatureMust/FeatureMust'
@@ -12,6 +13,7 @@ export default function Home() {
       <Features />
       <HomeShop />
       <FeatureMust />
+      <NewsLetter />
       <Footer />
     </>
   )

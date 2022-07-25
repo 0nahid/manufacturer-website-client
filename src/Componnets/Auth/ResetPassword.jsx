@@ -46,7 +46,7 @@ export default function ResetPassword() {
                                     }
                                 })} />
                             <label className="label">
-                                <span className="label-text-alt"> <p className="text-error">{errors.mail?.message}</p></span>
+                                <span className="label-text-alt"> <p className="text-error">{errors.email?.message}</p></span>
                             </label>
                         </div>
                         <div className="form-control w-full max-w-xs">
