@@ -1,6 +1,9 @@
-import { useEffect, useState } from 'react'
-import { Toaster } from 'react-hot-toast'
-import { Route, Routes } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import { Toaster } from 'react-hot-toast';
+import { Route, Routes } from 'react-router-dom';
+import Login from './Componnets/Auth/Login';
+import Register from './Componnets/Auth/Register';
+import ResetPassword from './Componnets/Auth/ResetPassword';
 import Home from './Componnets/Home/Home';
 import Loader from './Componnets/Shared/Loader';
 import Navbar from './Componnets/Shared/Navbar';
@@ -25,6 +28,9 @@ export default function App() {
                 }
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/register" element={<Register />} />
+                    <Route path="/reset-password" element={<ResetPassword />} />
 
                 </Routes>
                 <Toaster />
