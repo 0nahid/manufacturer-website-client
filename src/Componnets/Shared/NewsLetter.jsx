@@ -3,7 +3,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 export default function NewsLetter() {
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    const { register, formState: { errors }, handleSubmit , reset } = useForm();
     const onSubmit = (data) => {
         const email = data.email;
         // console.log(`email:`, email);
@@ -12,6 +12,7 @@ export default function NewsLetter() {
                 // console.log(res.data.ok);
                 if (res.data.ok === 1){
                     toast.success('Successfully subscribed to newsletter')
+                    reset();
                 }
             }
             ).catch(err => {
@@ -29,7 +30,7 @@ export default function NewsLetter() {
                     <label className="label">
                         <span className="label-text">Email</span>
                     </label>
-                    <input type="email" className="input input-bordered w-full max-w-lg"{...register("email",
+                    <input type="email" placeholder='example@example.com' className="input input-bordered w-full max-w-lg"{...register("email",
                         {
                             required: {
                                 value: true,

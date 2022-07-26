@@ -1,7 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function ShopData({ service }) {
-    const { name, image } = service;
+    const { name, image,_id } = service;
     return (
         <div class="card card-compact w-full bg-base-100 shadow-xl">
             <figure><img src={image} class="h-52" alt="Shoes" /></figure>
@@ -16,7 +17,7 @@ export default function ShopData({ service }) {
                     <div class="badge badge-outline">Products</div>
                 </div>
                 <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Buy Now</button>
+                    <Link to={`/services/${_id}`} class="btn btn-primary">Details</Link>
                 </div>
             </div>
         </div>

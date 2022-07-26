@@ -13,9 +13,9 @@ export default function HomeShop() {
     return (
         <>
             <h1 className="text-center font-bold m-10 text-3xl text-primary">Parts We Provide</h1>
-            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 justify-items-center mt-5">
+            <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
                 {
-                    data?.data?.slice(0, 4).map((service, index) => <HomeShopData key={index} service={service} />)
+                    data?.data?.slice(0, 3).map((service, index) => <HomeShopData key={index} service={service} />)
                 }
             </div>
         </>
