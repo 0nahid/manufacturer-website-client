@@ -5,6 +5,7 @@ import Login from './Componnets/Auth/Login';
 import Register from './Componnets/Auth/Register';
 import ResetPassword from './Componnets/Auth/ResetPassword';
 import RequiredAuth from './Componnets/Auth/Security/RequiredAuth';
+import Dashboard from './Componnets/Dashboard/Dashboard';
 import Home from './Componnets/Home/Home';
 import Loader from './Componnets/Shared/Loader';
 import Navbar from './Componnets/Shared/Navbar';
@@ -36,6 +37,9 @@ export default function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/reset-password" element={<ResetPassword />} />
+                    <Route path="/dashboard" element={<RequiredAuth><Dashboard /></RequiredAuth>} >
+
+                    </Route>
                 </Routes>
 
                 <Toaster />
