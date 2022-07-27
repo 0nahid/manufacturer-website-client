@@ -5,6 +5,7 @@ import Login from './Componnets/Auth/Login';
 import Register from './Componnets/Auth/Register';
 import ResetPassword from './Componnets/Auth/ResetPassword';
 import RequiredAuth from './Componnets/Auth/Security/RequiredAuth';
+import AllOrders from './Componnets/Dashboard/AllOrders';
 import Dashboard from './Componnets/Dashboard/Dashboard';
 import Orders from './Componnets/Dashboard/Orders';
 import Welcome from './Componnets/Dashboard/Welcome';
@@ -42,6 +43,7 @@ export default function App() {
                     <Route path="/dashboard" element={<RequiredAuth><Dashboard /></RequiredAuth>} >
                         <Route index element={<Welcome />} />
                         <Route path="orders" element={<Orders />} />
+                        <Route path="allOrders" element={<AllOrders />} />
                     </Route>
                 </Routes>
 

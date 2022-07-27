@@ -5,6 +5,7 @@ export default function Dashboard() {
   const Navmenu = (
     <li>
         <Link to="/dashboard/orders">Orders</Link>
+        <Link to="/dashboard/allOrders">All Orders</Link>
     </li>
 )
   return (

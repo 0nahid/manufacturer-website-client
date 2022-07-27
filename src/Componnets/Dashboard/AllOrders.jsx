@@ -1,31 +1,21 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
-import auth from '../../firebase.init';
-import Loader from '../Shared/Loader';
+import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
+import React from 'react'
+import { Link } from 'react-router-dom'
+import Loader from '../Shared/Loader'
+import Loading from '../Shared/Loading'
 
-export default function Orders() {
-    const [orders, setOrders] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [user] = useAuthState(auth);
-    useEffect(() => {
-        setLoading(true);
-        axios.get(`http://localhost:5500/api/orders/${user?.email}`)
-            .then(res => {
-                setOrders(res?.data);
-                // console.log(res.data);
-                setLoading(false);
-            }).catch(err => {
-                setLoading(false);
-            }
-            )
-    }, [user?.email])
+export default function AllOrders() {
+    const { data, refetch, isLoading } = useQuery(['available',], () => axios.get(`http://localhost:5500/api/orders`))
+    if (isLoading) {
+        <Loading />
+    }
+    console.log(data?.data);
     return (
         <>
             {
-                !loading ? (
-                    orders.length > 0 ? (
+                !isLoading ? (
+                    data?.data?.length > 0 ? (
                         <>
                             <h1 className="text-center text-xl font-medium mb-5">My order</h1>
                             <div className="container flex justify-center items-center">
@@ -40,10 +30,11 @@ export default function Orders() {
                                             <th>Price</th>
                                             <th>Payment</th>
                                             <th>TrnxId</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {orders?.map((order, index) => (
+                                        {data?.data?.map((order, index) => (
                                             <tr key={order?._id}>
                                                 <td>{index + 1}</td>
                                                 <td>{order?.productName}</td>
@@ -72,6 +63,9 @@ export default function Orders() {
                                                 <td>
                                                     {order?.transactionId ? <span className="font-bold">{order?.transactionId.slice(3)}</span> : <span className="text-green-500">Not Paid</span>}
                                                 </td>
+                                                <td>
+                                                    <button>Cancel</button>
+                                                </td>
                                             </tr>
                                         ))}
                                     </tbody>
@@ -88,5 +82,5 @@ export default function Orders() {
                 )
             }
         </>
-        )
+    )
 }
