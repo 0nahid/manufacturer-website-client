@@ -47,7 +47,7 @@ export default function Orders() {
                                         {orders?.map((order, index) => (
                                             <tr key={order?._id}>
                                                 <td>{index + 1}</td>
-                                                <td>{order?.serviceName}</td>
+                                                <td>{order?.productName}</td>
                                                 <td>{order?.email}</td>
                                                 <td>{order?.quantity}</td>
                                                 <td>{order?.size}</td>

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Page403 from '../../Errors/Page403';
 import Loading from '../../Shared/Loading';
@@ -35,15 +35,18 @@ export default function ServicesDetails() {
         setLoading(true);
         setTimeout(() => setLoading(false), 2000);
     }, [])
-    const { name: serviceName, type, image, price, available } = service;
+    const navigate = useNavigate()
+    const { productName,availableQty,orderQty, image, price ,productDescription } = service;
     const onSubmit = data => {
         const email = user?.email;
         const userName = user?.displayName;
-        const newData = { ...data, id, email, userName, serviceName, price }
+        const newData = { ...data, id, email, userName, productName, price }
+        console.log(newData);
         axios.post(`http://localhost:5500/api/orders`, newData)
             .then(res => {
                 if (res.status === 200) {
                     toast.success('Successfully ordered')
+                    navigate('/dashboard/orders')
                 }
             }).catch(err => toast.error('Error ordering'))
     }
@@ -61,8 +64,8 @@ export default function ServicesDetails() {
                                 <div class="lg:w-4/5 mx-auto flex flex-wrap">
                                     <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={image} />
                                     <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                                        <h2 class="text-sm title-font text-gray-500 tracking-widest">{type}</h2>
-                                        <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{serviceName}</h1>
+                                        {/* <h2 class="text-sm title-font text-gray-500 tracking-widest">" "</h2> */}
+                                        <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{productName}</h1>
                                         <div class="flex mb-4">
                                             <span class="flex items-center">
                                                 <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
@@ -100,7 +103,7 @@ export default function ServicesDetails() {
                                                 </a>
                                             </span>
                                         </div>
-                                        <p class="leading-relaxed">Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.</p>
+                                        <p class="leading-relaxed">{productDescription}</p>
                                         <form onSubmit={handleSubmit(onSubmit)}>
                                             <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                                                 <div class="flex items-center">
@@ -121,8 +124,10 @@ export default function ServicesDetails() {
                                                 </div>
                                             </div>
                                             <div>
-                                                <label class="block text-gray-700 text-sm font-bold mb-2" for="quantity">Quantity: <span class="badge mr-1"> {available} </span>
+                                                <h1 class="font-bold text-md">Minimum Order quantity {orderQty} </h1>
+                                                <label class="block text-gray-700  font-bold mb-2" for="quantity">Quantity: <span class="badge mr-1"> {availableQty} </span>
                                                     items available </label>
+                                                    
                                                 <input {...register("quantity", {
                                                     required: {
                                                         value: true,
@@ -133,11 +138,11 @@ export default function ServicesDetails() {
                                                         message: "Quantity must be a real number",
                                                     },
                                                     min: {
-                                                        // value: 1,
-                                                        message: "Quantity must be at least 1",
+                                                        value: orderQty,
+                                                        message: `Quantity must be at least ${orderQty}`,
                                                     },
                                                     max: {
-                                                        value: available,
+                                                        value: availableQty,
                                                         message: "Quantity must be less than or equal to available quantity",
                                                     },
                                                 })}
@@ -150,8 +155,8 @@ export default function ServicesDetails() {
                                             <div class="flex">
                                                 <span class="title-font font-medium text-2xl text-gray-900">${price}</span>
                                                 {
-                                                    available <= 0 ?
-                                                        <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" disabled>
+                                                    availableQty <= 0 ?
+                                                        <button class="flex ml-auto text-white bg-primary border-0 py-2 px-6 focus:outline-none rounded" type="button" disabled>
                                                             Out of Stock
                                                         </button>
                                                         :
