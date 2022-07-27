@@ -1,11 +1,11 @@
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useAuthState, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast';
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../../Hooks/useToken';
 import Loading from '../Shared/Loading';
 
 export default function Login() {
@@ -21,12 +21,25 @@ export default function Login() {
     const location = useLocation();
     let from = location.state?.from?.pathname || "/";
     const [user] = useAuthState(auth);
+    const [token] = useToken(sUser || gUser);
     const onSubmit = (data) => {
         // console.log(data)
         signInWithEmailAndPassword(data.mail, data.password);
     };
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
+            toast.success(`Welcome Back, ${auth?.currentUser?.displayName}`, {
+                autoClose: 4000,
+            })
+            navigate('/appointment');
+        }
+    }, [from, token, navigate])
     if (user) {
         navigate(from, { replace: true });
+        // toast.success(`Welcome Back, ${auth?.currentUser?.displayName}`, {
+        //     autoClose: 4000,
+        // })
     }
     let signInError;
     (gError || sError) ?
@@ -92,7 +105,7 @@ export default function Login() {
                     <div class="divider">OR</div>
                     <div className="form-control w-full max-w-xs">
                         <button className="btn btn-outline btn-dark text-black font-bold"
-                        onClick={() => signInWithGoogle()}
+                            onClick={() => signInWithGoogle()}
                         ><FcGoogle className="w-6 h-6 mr-1" />Login with Google</button>
                     </div>
                 </div>

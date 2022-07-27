@@ -5,6 +5,7 @@ import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import useToken from '../../Hooks/useToken';
 import Loading from '../Shared/Loading';
 
 export default function Register() {
@@ -17,6 +18,7 @@ export default function Register() {
     ] = useCreateUserWithEmailAndPassword(auth);
     const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
     const [updateProfile, updating, uError] = useUpdateProfile(auth);
+    const [token] = useToken(cUser || gUser);
 
     const navigate = useNavigate();
     let signUpError;
@@ -37,7 +39,7 @@ export default function Register() {
     if (gError || cError || uError) {
         signUpError = <p className="text-error">{gError?.message || cError?.message || uError?.message}</p>
     }
-    if(gUser || cUser) {
+    if(token) {
         navigate('/', { replace: true });
     }
     return (

@@ -6,6 +6,8 @@ import Register from './Componnets/Auth/Register';
 import ResetPassword from './Componnets/Auth/ResetPassword';
 import RequiredAuth from './Componnets/Auth/Security/RequiredAuth';
 import Dashboard from './Componnets/Dashboard/Dashboard';
+import Orders from './Componnets/Dashboard/Orders';
+import Welcome from './Componnets/Dashboard/Welcome';
 import Home from './Componnets/Home/Home';
 import Loader from './Componnets/Shared/Loader';
 import Navbar from './Componnets/Shared/Navbar';
@@ -38,7 +40,8 @@ export default function App() {
                     <Route path="/register" element={<Register />} />
                     <Route path="/reset-password" element={<ResetPassword />} />
                     <Route path="/dashboard" element={<RequiredAuth><Dashboard /></RequiredAuth>} >
-
+                        <Route index element={<Welcome />} />
+                        <Route path="orders" element={<Orders />} />
                     </Route>
                 </Routes>
 
