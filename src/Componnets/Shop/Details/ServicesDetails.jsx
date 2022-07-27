@@ -160,7 +160,7 @@ export default function ServicesDetails() {
                                                 </button>
                                                 :
                                                 <button type='submit' class="flex ml-auto text-white bg-primary border-0 py-2 px-6 focus:outline-none hover:bg-secondary rounded">
-                                                    Add to cart
+                                                    Place Order
                                                 </button>
                                         }
                                     </div>

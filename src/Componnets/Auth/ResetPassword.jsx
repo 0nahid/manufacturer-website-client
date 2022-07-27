@@ -13,7 +13,7 @@ export default function ResetPassword() {
     const navigate = useNavigate();
     const onSubmit = (data) => {
         sendPasswordResetEmail(data.email)
-        toast(`Password reset email sent to ${data.email}`)
+        toast.success(`Password reset email sent to ${data.email}`)
 
     };
     if (error) {

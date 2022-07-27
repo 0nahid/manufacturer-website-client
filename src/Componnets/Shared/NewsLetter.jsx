@@ -47,7 +47,7 @@ export default function NewsLetter() {
                         <span className="label-text-alt"> <p className="text-error">{errors.email?.message}</p></span>
                     </label>
                 </div>
-                <div className="form-control w-full max-w-xs">
+                <div className="form-control w-full max-w-lg">
                     <button className="btn btn-primary" type="submit">Subscribe</button>
                 </div>
             </form>
