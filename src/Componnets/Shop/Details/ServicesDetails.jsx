@@ -1,3 +1,4 @@
+import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -11,32 +12,26 @@ import Loading from '../../Shared/Loading';
 export default function ServicesDetails() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { id } = useParams();
-    const [service, setService] = useState({});
     const [user] = useAuthState(auth);
+    const navigate = useNavigate()
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
-    // console.log(user.email);
-    useEffect(() => {
-        axios.get(`http://localhost:5500/api/services/${id}`, {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('aceessToken')}`
-            }
-        })
-            .then(res => {
-                // console.log(res.data);
-                setService(res.data);
-            })
-            .catch(err => {
-                setError(err.response.status);
-            }
-            )
-    }, [id])
+    const { data: services, refetch, isLoading, error } = useQuery(['available',], () => axios.get(`http://localhost:5500/api/services/${id}`, {
+        headers: {
+            authorization: `Bearer ${localStorage.getItem('aceessToken')}`
+        }
+    }))
+
     useEffect(() => {
         setLoading(true);
-        setTimeout(() => setLoading(false), 2000);
-    }, [])
-    const navigate = useNavigate()
-    const { productName,availableQty,orderQty, image, price ,productDescription } = service;
+        setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+    }, []);
+    if (isLoading) {
+        return <Loading />
+    }
+
+    const { productName, availableQty, orderQty, image, price, productDescription } = services?.data;
     const onSubmit = data => {
         const email = user?.email;
         const userName = user?.displayName;
@@ -46,7 +41,24 @@ export default function ServicesDetails() {
             .then(res => {
                 if (res.status === 200) {
                     toast.success('Successfully ordered')
-                    navigate('/dashboard/orders')
+                    // navigate('/dashboard/orders')
+                    const orderQuabtity = data.quantity;
+                    const newAvailableQty = availableQty - orderQuabtity;
+                    axios.put(`http://localhost:5500/api/services/${id}`, { availableQty: newAvailableQty }, {
+                        headers: {
+                            authorization: `Bearer ${localStorage.getItem('aceessToken')}`
+                        }
+                    })
+                        .then(res => {
+                            // console.log(res);
+                            navigate('/dashboard/orders')
+                            refetch();
+                        }
+                        )
+                        .catch(err => {
+                            console.log(err);
+                        });
+
                 }
             }).catch(err => toast.error('Error ordering'))
     }
@@ -127,7 +139,7 @@ export default function ServicesDetails() {
                                                 <h1 class="font-bold text-md">Minimum Order quantity {orderQty} </h1>
                                                 <label class="block text-gray-700  font-bold mb-2" for="quantity">Quantity: <span class="badge mr-1"> {availableQty} </span>
                                                     items available </label>
-                                                    
+
                                                 <input {...register("quantity", {
                                                     required: {
                                                         value: true,

@@ -1,7 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 export default function HomeShopData({ service }) {
-    const { productName, image, _id,price,availableQty } = service;
+    const { productName, image, _id, price, availableQty } = service;
+    // console.log(service);
     return (
         <div class="card card-compact w-full bg-base-100 shadow-xl">
             <figure><img src={image} class="h-52" alt="Shoes" /></figure>
