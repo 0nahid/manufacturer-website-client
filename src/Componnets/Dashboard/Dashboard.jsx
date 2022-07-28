@@ -6,6 +6,7 @@ export default function Dashboard() {
     <li>
         <Link to="/dashboard/orders">My Orders</Link>
         <Link to="/dashboard/allOrders">All Orders</Link>
+        <Link to="/dashboard/addProduct">Add Product</Link>
     </li>
 )
   return (

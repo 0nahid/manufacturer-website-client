@@ -10,7 +10,7 @@ export default function AllOrders() {
     if (isLoading) {
         <Loading />
     }
-    // console.log(data?.data);
+
     const cancelOrder = (id, quantity) => {
         console.log(id, quantity);
         // asking confirmation with sweetalert
@@ -24,25 +24,26 @@ export default function AllOrders() {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.value) {
+
                 // if confirmed, delete the order
                 axios.delete(`http://localhost:5500/api/orders/${id}`, {
                     headers: {
                         authorization: `Bearer ${localStorage.getItem('aceessToken')}`
                     }
                 })
-                    .then(() => {
-                        // if deleted, set the quantity to the current quantity with put api
-                        axios.put(`http://localhost:5500/api/services/${id}`, {
-                            availableQty: data?.data?.find(item => item._id === id)?.availableQty + quantity
-                        }, {
-                            headers: {
-                                authorization: `Bearer ${localStorage.getItem('aceessToken')}`
-                            }
-                        })
-                            .then(() => refetch())
+                    .then(res => {
+                        console.log(res);
+                        Swal.fire(
+                            'Deleted!',
+                            'Your file has been deleted.',
+                            'success'
+                        )
+                        refetch()
                     }
+                    ).catch(err => console.log(err))
 
-                    )
+
+
             }
         })
     }

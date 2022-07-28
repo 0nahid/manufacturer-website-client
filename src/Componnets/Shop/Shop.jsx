@@ -16,7 +16,7 @@ export default function Shop() {
             .then(res => res.json())
             .then(data => {
                 setServices(data);
-                console.log(data);
+                // console.log(data);
             }).catch(err => console.log(err))
     }, [])
     return (

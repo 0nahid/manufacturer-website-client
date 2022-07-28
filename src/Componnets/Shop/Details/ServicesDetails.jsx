@@ -36,7 +36,7 @@ export default function ServicesDetails() {
         const email = user?.email;
         const userName = user?.displayName;
         const newData = { ...data, id, email, userName, productName, price }
-        console.log(newData);
+        // console.log(newData);
         axios.post(`http://localhost:5500/api/orders`, newData)
             .then(res => {
                 if (res.status === 200) {
