@@ -1,12 +1,16 @@
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import React from 'react'
-import { Link } from 'react-router-dom'
 import Swal from 'sweetalert2'
 import Loader from '../Shared/Loader'
 import Loading from '../Shared/Loading'
 export default function AllOrders() {
-    const { data, refetch, isLoading } = useQuery(['available',], () => axios.get(`http://localhost:5500/api/orders`))
+    const { data, refetch, isLoading } = useQuery(['available',], () => axios.get(`http://localhost:5500/api/orders`, {
+        headers: {
+            authorization: `Bearer ${localStorage.getItem('aceessToken')}`
+        }
+    }))
+    // console.log(data);
     if (isLoading) {
         <Loading />
     }
@@ -58,13 +62,13 @@ export default function AllOrders() {
                                 <table className="table table-zebra">
                                     <thead>
                                         <tr>
-                                            <th></th>
+                                            <th>Sl.</th>
                                             <th>order Name</th>
                                             <th>Email</th>
                                             <th>Quantity</th>
                                             <th>Size</th>
                                             <th>Price</th>
-                                            <th>Payment</th>
+                                            <th>Payment Status</th>
                                             <th>TrnxId</th>
                                             <th>Action</th>
                                         </tr>
@@ -88,9 +92,9 @@ export default function AllOrders() {
                                                                 Paid
                                                             </button>
                                                         </span> : <span>
-                                                            <Link to={`/dashboard/payment/${order?._id}`} className="btn btn-sm btn-info text-white font-bold py-2 px-4 rounded">
-                                                                Pay
-                                                            </Link>
+                                                            <button className="btn btn-sm btn-info text-white font-bold py-2 px-4 rounded">
+                                                                Not paid
+                                                            </button>
                                                         </span>
                                                         :
                                                         <span className="text-green-500">Free</span>}
@@ -99,12 +103,18 @@ export default function AllOrders() {
                                                 <td>
                                                     {order?.transactionId ? <span className="font-bold">{order?.transactionId.slice(3)}</span> : <span className="text-green-500">Not Paid</span>}
                                                 </td>
-                                                <td>
-                                                    <button
-                                                        onClick={() => cancelOrder(order?._id, order?.quantity)}
-                                                        className="btn btn-sm btn-error text-white font-bold py-2 px-4 rounded"
-                                                    >Cancel</button>
-                                                </td>
+                                                {
+                                                    order?.paid ? (
+                                                        <td></td>
+                                                    ) : (
+                                                        <td>
+                                                            <button
+                                                                onClick={() => cancelOrder(order?._id, order?.quantity)}
+                                                                className="btn btn-sm btn-error text-white font-bold py-2 px-4 rounded"
+                                                            >Cancel</button>
+                                                        </td>
+                                                    )
+                                                }
                                             </tr>
                                         ))}
                                     </tbody>

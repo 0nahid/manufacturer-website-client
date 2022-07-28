@@ -11,7 +11,11 @@ export default function Orders() {
     const [user] = useAuthState(auth);
     useEffect(() => {
         setLoading(true);
-        axios.get(`http://localhost:5500/api/orders/${user?.email}`)
+        axios.get(`http://localhost:5500/api/orders/${user?.email}`,{
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('aceessToken')}`
+            }
+        })
             .then(res => {
                 setOrders(res?.data);
                 // console.log(res.data);
@@ -34,6 +38,7 @@ export default function Orders() {
                                         <tr>
                                             <th></th>
                                             <th>order Name</th>
+                                            <th>id</th>
                                             <th>Email</th>
                                             <th>Quantity</th>
                                             <th>Size</th>
@@ -47,6 +52,7 @@ export default function Orders() {
                                             <tr key={order?._id}>
                                                 <td>{index + 1}</td>
                                                 <td>{order?.productName}</td>
+                                                <td>{order?._id}</td>
                                                 <td>{order?.email}</td>
                                                 <td>{order?.quantity}</td>
                                                 <td>{order?.size}</td>
@@ -56,7 +62,7 @@ export default function Orders() {
                                                 <td>
 
                                                     {order?.price ?
-                                                        order?.price && order.paid ? <span className="text-green-500">
+                                                        order?.price && order?.price > 0 && order.paid ? <span className="text-green-500">
                                                             <button className="btn btn-sm btn-success text-white font-bold py-2 px-4 rounded">
                                                                 Paid
                                                             </button>
@@ -88,5 +94,5 @@ export default function Orders() {
                 )
             }
         </>
-        )
+    )
 }

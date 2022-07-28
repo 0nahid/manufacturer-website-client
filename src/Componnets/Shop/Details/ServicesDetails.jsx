@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import useAdmin from '../../../Hooks/useAdmin';
 import Page403 from '../../Errors/Page403';
 import Loading from '../../Shared/Loading';
 
@@ -13,6 +14,7 @@ export default function ServicesDetails() {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { id } = useParams();
     const [user] = useAuthState(auth);
+    const [admin] = useAdmin(user)
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false);
     const { data: services, refetch, isLoading, error } = useQuery(['available',], () => axios.get(`http://localhost:5500/api/services/${id}`, {
@@ -35,9 +37,9 @@ export default function ServicesDetails() {
     const onSubmit = data => {
         const email = user?.email;
         const userName = user?.displayName;
-        const newData = { ...data, id, email, userName, productName, price }
-        // console.log(newData);
-        axios.post(`http://localhost:5500/api/orders`, newData,{
+        const newData = { ...data, email, userName, productName, price }
+        console.log(newData);
+        axios.post(`http://localhost:5500/api/orders`, newData, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('aceessToken')}`
             }
@@ -139,48 +141,61 @@ export default function ServicesDetails() {
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div>
-                                                <h1 class="font-bold text-md">Minimum Order quantity {orderQty} </h1>
-                                                <label class="block text-gray-700  font-bold mb-2" for="quantity">Quantity: <span class="badge mr-1"> {availableQty} </span>
-                                                    items available </label>
+                                            {
+                                                admin ? (
+                                                    <div>
+                                                        <div class="flex items-center">
+                                                            <h1>Order option for site admin is not allowed !!!</h1>
+                                                        </div>
+                                                    </div>
+                                                ) : (
+                                                    <>
+                                                        <div>
+                                                            <h1 class="font-bold text-md">Minimum Order quantity {orderQty} </h1>
+                                                            <label class="block text-gray-700  font-bold mb-2" for="quantity">Quantity: <span class="badge mr-1"> {availableQty} </span>
+                                                                items available </label>
 
-                                                <input {...register("quantity", {
-                                                    required: {
-                                                        value: true,
-                                                        message: "Quantity is required",
-                                                    },
-                                                    pattern: {
-                                                        value: /^(0|[1-9]\d*)$/,
-                                                        message: "Quantity must be a real number",
-                                                    },
-                                                    min: {
-                                                        value: orderQty,
-                                                        message: `Quantity must be at least ${orderQty}`,
-                                                    },
-                                                    max: {
-                                                        value: availableQty,
-                                                        message: "Quantity must be less than or equal to available quantity",
-                                                    },
-                                                })}
-                                                    maxLength={10}
-                                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-3" id="quantity" type="number" placeholder="1" />
-                                                <label className="label">
-                                                    <span className="label-text-alt"> <p className="text-error">{errors.quantity?.message}</p></span>
-                                                </label>
-                                            </div>
-                                            <div class="flex">
-                                                <span class="title-font font-medium text-2xl text-gray-900">${price}</span>
-                                                {
-                                                    availableQty <= 0 ?
-                                                        <button class="flex ml-auto text-white bg-primary border-0 py-2 px-6 focus:outline-none rounded" type="button" disabled>
-                                                            Out of Stock
-                                                        </button>
-                                                        :
-                                                        error ? <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" disabled> Can't Order' </button> : <button type='submit' class="flex ml-auto text-white bg-primary border-0 py-2 px-6 focus:outline-none hover:bg-secondary rounded">
-                                                            Place Order
-                                                        </button>
-                                                }
-                                            </div>
+                                                            <input {...register("quantity", {
+                                                                required: {
+                                                                    value: true,
+                                                                    message: "Quantity is required",
+                                                                },
+                                                                pattern: {
+                                                                    value: /^(0|[1-9]\d*)$/,
+                                                                    message: "Quantity must be a real number",
+                                                                },
+                                                                min: {
+                                                                    value: orderQty,
+                                                                    message: `Quantity must be at least ${orderQty}`,
+                                                                },
+                                                                max: {
+                                                                    value: availableQty,
+                                                                    message: "Quantity must be less than or equal to available quantity",
+                                                                },
+                                                            })}
+                                                                maxLength={10}
+                                                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline mb-3" id="quantity" type="number" placeholder="1" />
+                                                            <label className="label">
+                                                                <span className="label-text-alt"> <p className="text-error">{errors.quantity?.message}</p></span>
+                                                            </label>
+                                                        </div>
+
+                                                        <div class="flex">
+                                                            <span class="title-font font-medium text-2xl text-gray-900">${price}</span>
+                                                            {
+                                                                availableQty <= 0 ?
+                                                                    <button class="flex ml-auto text-white bg-primary border-0 py-2 px-6 focus:outline-none rounded" type="button" disabled>
+                                                                        Out of Stock
+                                                                    </button>
+                                                                    :
+                                                                    error ? <button class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button" disabled> Can't Order' </button> : <button type='submit' class="flex ml-auto text-white bg-primary border-0 py-2 px-6 focus:outline-none hover:bg-secondary rounded">
+                                                                        Place Order
+                                                                    </button>
+                                                            }
+                                                        </div>
+                                                    </>
+                                                )
+                                            }
                                         </form>
                                     </div>
                                 </div>

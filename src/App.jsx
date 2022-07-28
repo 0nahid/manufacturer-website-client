@@ -11,6 +11,7 @@ import AllOrders from './Componnets/Dashboard/AllOrders';
 import AllUsers from './Componnets/Dashboard/AllUsers';
 import Dashboard from './Componnets/Dashboard/Dashboard';
 import Orders from './Componnets/Dashboard/Orders';
+import Payment from './Componnets/Dashboard/Payment';
 import Welcome from './Componnets/Dashboard/Welcome';
 import Home from './Componnets/Home/Home';
 import Loader from './Componnets/Shared/Loader';
@@ -46,6 +47,7 @@ export default function App() {
                     <Route path="/dashboard" element={<RequiredAuth><Dashboard /></RequiredAuth>} >
                         <Route index element={<Welcome />} />
                         <Route path="orders" element={<Orders />} />
+                        <Route path="payment/:id" element={<Payment />} />
                         <Route path="allOrders" element={<RequiredAdmin><AllOrders /></RequiredAdmin>} />
                         <Route path="addProduct" element={<RequiredAdmin><AddProduct /></RequiredAdmin>} />
                         <Route path="users" element={<RequiredAdmin><AllUsers /></RequiredAdmin>} />

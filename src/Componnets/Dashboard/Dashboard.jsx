@@ -9,13 +9,15 @@ export default function Dashboard() {
   const [admin] = useAdmin(user)
   const Navmenu = (
     <li>
-      <Link to="/dashboard/orders">My Orders</Link>
       {
-        admin && <>
+        admin ? <>
           <Link to="/dashboard/allOrders">All Orders</Link>
           <Link to="/dashboard/addProduct">Add Product</Link>
           <Link to="/dashboard/users">All Users</Link>
-        </>
+        </> :
+          <>
+            <Link to="/dashboard/orders">My Orders</Link>
+          </>
       }
     </li>
   )
