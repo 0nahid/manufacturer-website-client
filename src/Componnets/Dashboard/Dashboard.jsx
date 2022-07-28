@@ -10,11 +10,14 @@ export default function Dashboard() {
   const Navmenu = (
     <li>
       {
-        admin ? <>
-          <Link to="/dashboard/allOrders">All Orders</Link>
-          <Link to="/dashboard/addProduct">Add Product</Link>
-          <Link to="/dashboard/users">All Users</Link>
-        </> :
+        admin ?
+          <>
+            <Link to="/dashboard/allOrders">All Orders</Link>
+            <Link to="/dashboard/addProduct">Add Product</Link>
+            <Link to="/dashboard/users">All Users</Link>
+            <Link to="/dashboard/manageProducts">Manage Products</Link>
+          </>
+          :
           <>
             <Link to="/dashboard/orders">My Orders</Link>
           </>

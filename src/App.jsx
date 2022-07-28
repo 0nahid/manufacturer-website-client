@@ -10,6 +10,7 @@ import AddProduct from './Componnets/Dashboard/AddProducts';
 import AllOrders from './Componnets/Dashboard/AllOrders';
 import AllUsers from './Componnets/Dashboard/AllUsers';
 import Dashboard from './Componnets/Dashboard/Dashboard';
+import ManageProducts from './Componnets/Dashboard/ManageProducts';
 import Orders from './Componnets/Dashboard/Orders';
 import Payment from './Componnets/Dashboard/Payment';
 import Welcome from './Componnets/Dashboard/Welcome';
@@ -51,6 +52,7 @@ export default function App() {
                         <Route path="allOrders" element={<RequiredAdmin><AllOrders /></RequiredAdmin>} />
                         <Route path="addProduct" element={<RequiredAdmin><AddProduct /></RequiredAdmin>} />
                         <Route path="users" element={<RequiredAdmin><AllUsers /></RequiredAdmin>} />
+                        <Route path="manageProducts" element={<RequiredAdmin><ManageProducts /></RequiredAdmin>} />
                     </Route>
                 </Routes>
 

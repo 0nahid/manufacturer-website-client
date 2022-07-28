@@ -5,14 +5,19 @@ const useShopdata = () => {
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(
-                "http://localhost:5500/api/services"
+                "http://localhost:5500/api/services", {
+                method: "GET",
+                headers: {
+                    authorization: `Bearer ${localStorage.getItem('aceessToken')}`
+                }
+            }
             );
             const data = await response.json();
             setShopdata(data);
         };
         fetchData();
     }, []);
-    
+
     return shopdata;
 }
 export default useShopdata;

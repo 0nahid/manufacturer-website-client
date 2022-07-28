@@ -50,7 +50,6 @@ const AddProduct = () => {
             price: data?.price,
             productDescription: data?.productDescription,
             image: image,
-            createdAt: new Date().toDateString(),
         };
 
         axios.post(`http://localhost:5500/api/services`, productData, {
