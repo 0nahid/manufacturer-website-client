@@ -1,5 +1,6 @@
 import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import { Helmet } from 'react-helmet'
 import { Link, Outlet } from 'react-router-dom'
 import auth from '../../firebase.init'
 import useAdmin from '../../Hooks/useAdmin'
@@ -26,6 +27,10 @@ export default function Dashboard() {
   )
   return (
     <div class="drawer">
+      <Helmet>
+        <title>Dashboard - Car Parts</title>
+        <meta name="description" content="Helmet application" />
+      </Helmet>
       <input id="dashboard-drawer" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content flex flex-col">
         <div class="w-full navbar bg-base-300">

@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
 import axios from "axios"
+import { Helmet } from "react-helmet"
 import Loader from "../Shared/Loader"
 import Loading from "../Shared/Loading"
 import Users from "./Users"
@@ -22,7 +23,12 @@ export default function AllUsers() {
             {
                 !isLoading ? (
                     <>
-                      <h1 className="text-center text-xl font-medium mb-5">All user</h1>
+                        <h1 className="text-center text-xl font-medium mb-5">All user</h1>
+                        <Helmet>
+                            <title>All Users - Car Parts</title>
+                            <meta name="description" content="Helmet application" />
+                        </Helmet>
+
                         <div className="container flex justify-center items-center">
                             <table className="table table-zebra">
                                 <thead>

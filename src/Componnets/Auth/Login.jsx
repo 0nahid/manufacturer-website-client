@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useAuthState, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import toast from 'react-hot-toast';
 import { FcGoogle } from "react-icons/fc";
@@ -50,6 +51,10 @@ export default function Login() {
     }
     return (
         <div class="flex h-screen justify-center items-center px-4 lg:px-12">
+            <Helmet>
+                <title>Login - Car Parts</title>
+                <meta name="description" content="Helmet application" />
+            </Helmet>
             <div class="card w-96 ">
                 <h1 className="text-center text-2xl font-bold mt-5">Login Here</h1>
                 <div class="card-body">

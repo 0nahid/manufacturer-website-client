@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Helmet } from 'react-helmet';
 import auth from '../../firebase.init';
 import useAdmin from '../../Hooks/useAdmin';
 
@@ -10,6 +11,10 @@ export default function Welcome() {
     const dummpyPhoto = 'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200';
     return (
         <div class="flex justify-center items-center min-h-screen ">
+             <Helmet>
+                <title>Dashboard - Car Parts</title>
+                <meta name="description" content="Helmet application" />
+            </Helmet>
             <div class="stack">
                 <div class="text-center border border-base-content card  bg-gray-50">
                     <div class="card-body items-center">

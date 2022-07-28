@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import auth from '../../firebase.init';
 import Loader from '../Shared/Loader';
@@ -32,6 +33,10 @@ export default function Orders() {
                     orders.length > 0 ? (
                         <>
                             <h1 className="text-center text-xl font-medium mb-5">My order</h1>
+                            <Helmet>
+                                <title>My Orders - Car Parts</title>
+                                <meta name="description" content="Helmet application" />
+                            </Helmet>
                             <div className="container flex justify-center items-center">
                                 <table className="table table-zebra">
                                     <thead>

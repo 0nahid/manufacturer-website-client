@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Helmet } from 'react-helmet';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate, useParams } from 'react-router-dom';
@@ -64,13 +65,16 @@ export default function ServicesDetails() {
                         .catch(err => {
                             console.log(err);
                         });
-
                 }
             }).catch(err => toast.error('Error ordering'))
     }
 
     return (
         <>
+            <Helmet>
+                <title>{productName} - Car Parts</title>
+                <meta name="description" content={productDescription} />
+            </Helmet>
             {
                 error ? <Page403 /> :
                     loading ? <Loading /> :

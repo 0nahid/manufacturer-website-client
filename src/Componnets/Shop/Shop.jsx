@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import Loading from '../Shared/Loading';
 import ShopData from './ShopData';
 
@@ -21,6 +22,10 @@ export default function Shop() {
     }, [])
     return (
         <>
+            <Helmet>
+                <title>Shop - Car Parts</title>
+                <meta name="description" content="Helmet application" />
+            </Helmet>
             {
                 loading ? <Loading /> : (
                     <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">

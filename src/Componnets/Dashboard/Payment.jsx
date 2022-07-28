@@ -5,6 +5,7 @@ import { loadStripe } from '@stripe/stripe-js'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import { useParams } from 'react-router-dom'
 import Loader from '../Shared/Loader'
 
@@ -30,6 +31,10 @@ export default function Payment() {
     return (
         <div>
             <h1>Payment of {id}</h1>
+            <Helmet>
+                <title>Payment - Car Parts</title>
+                <meta name="description" content="Helmet application" />
+            </Helmet>
             <div className="card w-50 bg-base-100 shadow-xl my-12">
                 <div className="card-body">
                     <p className="text-2xl font-semibold">Grettings <span className="text-success">{userName}</span> </p>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { Helmet } from 'react-helmet';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
@@ -44,6 +45,10 @@ export default function Register() {
     }
     return (
         <div className="flex justify-center items-center h-screen">
+             <Helmet>
+                <title>Register - Car Parts</title>
+                <meta name="description" content="Helmet application" />
+            </Helmet>
             <div className="card w-96 ">
                 <div className="card-body">
                     <h2 className="text-center text-2xl font-bold">Sign up</h2>

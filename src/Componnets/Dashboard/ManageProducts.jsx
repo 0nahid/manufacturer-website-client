@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React from 'react';
+import { Helmet } from 'react-helmet';
 import Swal from 'sweetalert2';
 import Loader from '../Shared/Loader';
 import Loading from '../Shared/Loading';
@@ -55,6 +56,11 @@ export default function ManageProducts() {
                     data?.data?.length > 0 ? (
                         <>
                             <h1 className="text-center text-xl font-medium mb-5">Manage Products</h1>
+                            <Helmet>
+                                <title>Manage Products - Car Parts</title>
+                                <meta name="description" content="Helmet application" />
+                            </Helmet>
+
                             <div className="container flex justify-center items-center">
                                 <table className="table table-zebra">
                                     <thead>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
+import { Helmet } from 'react-helmet';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
@@ -24,6 +25,10 @@ export default function ResetPassword() {
     }
     return (
         <div class="flex h-screen justify-center items-center px-4 lg:px-12">
+             <Helmet>
+                <title>Reset - Car Parts</title>
+                <meta name="description" content="Helmet application" />
+            </Helmet>
             <div class="card w-96 bg-base-100 shadow-xl">
                 <div class="card-body">
                     <h2 class="card-title">Reset Password!</h2>

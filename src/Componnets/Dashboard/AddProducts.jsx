@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Helmet } from "react-helmet";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 
@@ -70,6 +71,10 @@ const AddProduct = () => {
 
     return (
         <div className="p-5">
+             <Helmet>
+                <title>Add Product - Car Parts</title>
+                <meta name="description" content="Helmet application" />
+            </Helmet>
             <h3 className="text-2xl font-semibold mb-2">Add Product</h3>
             <form
                 onSubmit={handleSubmit(onSubmit)}
