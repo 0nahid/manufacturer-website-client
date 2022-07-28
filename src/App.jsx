@@ -4,9 +4,11 @@ import { Route, Routes } from 'react-router-dom';
 import Login from './Componnets/Auth/Login';
 import Register from './Componnets/Auth/Register';
 import ResetPassword from './Componnets/Auth/ResetPassword';
+import RequiredAdmin from './Componnets/Auth/Security/RequiredAdmin';
 import RequiredAuth from './Componnets/Auth/Security/RequiredAuth';
 import AddProduct from './Componnets/Dashboard/AddProducts';
 import AllOrders from './Componnets/Dashboard/AllOrders';
+import AllUsers from './Componnets/Dashboard/AllUsers';
 import Dashboard from './Componnets/Dashboard/Dashboard';
 import Orders from './Componnets/Dashboard/Orders';
 import Welcome from './Componnets/Dashboard/Welcome';
@@ -44,8 +46,9 @@ export default function App() {
                     <Route path="/dashboard" element={<RequiredAuth><Dashboard /></RequiredAuth>} >
                         <Route index element={<Welcome />} />
                         <Route path="orders" element={<Orders />} />
-                        <Route path="allOrders" element={<AllOrders />} />
-                        <Route path="addProduct" element={<AddProduct />} />
+                        <Route path="allOrders" element={<RequiredAdmin><AllOrders /></RequiredAdmin>} />
+                        <Route path="addProduct" element={<RequiredAdmin><AddProduct /></RequiredAdmin>} />
+                        <Route path="users" element={<RequiredAdmin><AllUsers /></RequiredAdmin>} />
                     </Route>
                 </Routes>
 

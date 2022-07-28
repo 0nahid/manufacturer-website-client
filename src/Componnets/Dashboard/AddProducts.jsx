@@ -2,11 +2,9 @@ import axios from "axios";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import useTitle from "../../Hooks/useTitle";
 
 
 const AddProduct = () => {
-    useTitle("Add Product");
     const upload_api_key = `a243f030b37702a67079d2a90f4a170e`;
     const [isFile, setIsFile] = useState(false);
     const {
@@ -62,7 +60,7 @@ const AddProduct = () => {
         })
             .then(res => {
                 console.log(res);
-                if(res.status === 200){
+                if (res.status === 200) {
                     toast.success("Product Added Successfully");
                     reset();
                 }

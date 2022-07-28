@@ -37,7 +37,11 @@ export default function ServicesDetails() {
         const userName = user?.displayName;
         const newData = { ...data, id, email, userName, productName, price }
         // console.log(newData);
-        axios.post(`http://localhost:5500/api/orders`, newData)
+        axios.post(`http://localhost:5500/api/orders`, newData,{
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('aceessToken')}`
+            }
+        })
             .then(res => {
                 if (res.status === 200) {
                     toast.success('Successfully ordered')

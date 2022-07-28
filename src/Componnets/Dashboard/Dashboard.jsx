@@ -1,14 +1,24 @@
 import React from 'react'
+import { useAuthState } from 'react-firebase-hooks/auth'
 import { Link, Outlet } from 'react-router-dom'
+import auth from '../../firebase.init'
+import useAdmin from '../../Hooks/useAdmin'
 
 export default function Dashboard() {
+  const [user] = useAuthState(auth)
+  const [admin] = useAdmin(user)
   const Navmenu = (
     <li>
-        <Link to="/dashboard/orders">My Orders</Link>
-        <Link to="/dashboard/allOrders">All Orders</Link>
-        <Link to="/dashboard/addProduct">Add Product</Link>
+      <Link to="/dashboard/orders">My Orders</Link>
+      {
+        admin && <>
+          <Link to="/dashboard/allOrders">All Orders</Link>
+          <Link to="/dashboard/addProduct">Add Product</Link>
+          <Link to="/dashboard/users">All Users</Link>
+        </>
+      }
     </li>
-)
+  )
   return (
     <div class="drawer">
       <input id="dashboard-drawer" type="checkbox" class="drawer-toggle" />
@@ -21,7 +31,7 @@ export default function Dashboard() {
           </div>
           <div class="flex-none hidden lg:block">
             <ul class="menu menu-horizontal">
-             {Navmenu}
+              {Navmenu}
             </ul>
           </div>
         </div>
@@ -30,7 +40,7 @@ export default function Dashboard() {
       <div class="drawer-side">
         <label for="dashboard-drawer" class="drawer-overlay"></label>
         <ul class="menu p-4 overflow-y-auto w-80 bg-base-100">
-        {Navmenu}
+          {Navmenu}
         </ul>
 
       </div>
