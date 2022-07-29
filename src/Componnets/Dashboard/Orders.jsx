@@ -37,7 +37,7 @@ export default function Orders() {
                                 <title>My Orders - Car Parts</title>
                                 <meta name="description" content="Helmet application" />
                             </Helmet>
-                            <div className="container flex justify-center items-center">
+                            <div className="container mx-auto flex justify-center items-center">
                                 <table className="table table-zebra">
                                     <thead>
                                         <tr>

@@ -21,7 +21,7 @@ export default function HomeShop() {
     }, [])
 
     return (
-        <>
+        <div>
             <h1 className="text-center font-bold m-10 text-3xl text-primary">Parts We Provide</h1>
             {
                 loading ? <Loading /> : (
@@ -32,6 +32,6 @@ export default function HomeShop() {
                     </div>
                 )
             }
-        </>
+        </div>
     )
 }

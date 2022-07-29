@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function ShopData({ service }) {
     const { productName, image, _id, price, availableQty } = service;
     return (
-        <div class="card card-compact w-full bg-base-100 shadow-xl">
+        <div class="card card-compact w-full bg-slate-50/60 backdrop-blur-2xl transition-colors duration-500 shadow-xl">
             <figure><img src={image} class="h-52" alt="Shoes" /></figure>
             <div class="card-body">
                 <h2 class="card-title">

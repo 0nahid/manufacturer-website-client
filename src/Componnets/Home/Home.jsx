@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import Footer from '../Shared/Footer'
+import Loading from '../Shared/Loading'
 import NewsLetter from '../Shared/NewsLetter'
 import Statics from '../Shared/Statics'
 import HomeShop from '../Shop/HomeShop'
@@ -9,19 +10,36 @@ import FeatureMust from './FeatureMust/FeatureMust'
 import Features from './FeaturePart/Features'
 
 export default function Home() {
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, []);
+
   return (
     <>
-      <Helmet>
-        <title>Home - Car Parts</title>
-        <meta name="description" content="Helmet application" />
-      </Helmet>
-      <Banner />
-      <Features />
-      <HomeShop />
-      <FeatureMust />
-      <Statics />
-      <NewsLetter />
-      <Footer />
+      {
+        loading ? <Loading /> : (
+          <>
+            <Helmet>
+              <title>Home - Car Parts</title>
+              <meta name="description" content="Helmet application" />
+            </Helmet>
+            <Banner />
+            <div className="container mx-auto">
+              <Features />
+              <HomeShop />
+              <FeatureMust />
+              <Statics />
+            </div>
+            <NewsLetter />
+            <Footer />
+          </>
+        )
+      }
     </>
   )
 }

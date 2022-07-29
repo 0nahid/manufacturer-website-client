@@ -70,7 +70,7 @@ const AddProduct = () => {
     };
 
     return (
-        <div className="p-5">
+        <div className="p-5 container mx-auto">
              <Helmet>
                 <title>Add Product - Car Parts</title>
                 <meta name="description" content="Helmet application" />

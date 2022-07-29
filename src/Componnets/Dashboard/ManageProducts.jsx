@@ -61,7 +61,7 @@ export default function ManageProducts() {
                                 <meta name="description" content="Helmet application" />
                             </Helmet>
 
-                            <div className="container flex justify-center items-center">
+                            <div className=" flex justify-center items-center">
                                 <table className="table table-zebra">
                                     <thead>
                                         <tr>

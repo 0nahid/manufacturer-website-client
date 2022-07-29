@@ -19,7 +19,7 @@ export default function Navbar() {
         navigate("/");
     };
     const Navmenu = (
-        <li>
+        <li class="font-bold">
             <Link to="/">Home</Link>
             <Link to="/shop">Shop</Link>
             <Link to="/blogs">Blogs</Link>
@@ -39,7 +39,7 @@ export default function Navbar() {
     )
     return (
         <>
-            <div class="navbar bg-base-100">
+            <div class="navbar sticky top-0 z-40 border-b bg-slate-50/60 backdrop-blur-2xl transition-colors duration-500 dark:bg-[#0B1120]/80 ">
                 <div class="navbar-start">
                     <div class="dropdown">
                         <label tabindex="0" class="btn btn-ghost lg:hidden">
@@ -53,7 +53,7 @@ export default function Navbar() {
                         <Link to="/" class="btn btn-ghost normal-case text-2xl font-bold">Car parts</Link>
                     </div>
                 </div>
-                <div class="navbar-center hidden lg:flex">
+                <div class="navbar-end hidden lg:flex">
                     <ul class="menu menu-horizontal p-0">
                         {Navmenu}
                     </ul>

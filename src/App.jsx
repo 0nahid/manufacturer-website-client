@@ -6,6 +6,7 @@ import Register from './Componnets/Auth/Register';
 import ResetPassword from './Componnets/Auth/ResetPassword';
 import RequiredAdmin from './Componnets/Auth/Security/RequiredAdmin';
 import RequiredAuth from './Componnets/Auth/Security/RequiredAuth';
+import Contact from './Componnets/Contact/Contact';
 import AddProduct from './Componnets/Dashboard/AddProducts';
 import AllOrders from './Componnets/Dashboard/AllOrders';
 import AllUsers from './Componnets/Dashboard/AllUsers';
@@ -31,7 +32,7 @@ export default function App() {
 
     return (
         <div>
-            <div className="max-w-7xl mx-auto">
+            <div>
                 {
                     loading ? (
                         <Loader />
@@ -41,10 +42,13 @@ export default function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/shop" element={<Shop />} />
-                    <Route path="/services/:id" element={<RequiredAuth><ServicesDetails /></RequiredAuth>} />
+                    <Route path="/contact" element={<Contact />} />
+
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />
                     <Route path="/reset-password" element={<ResetPassword />} />
+
+                    <Route path="/services/:id" element={<RequiredAuth><ServicesDetails /></RequiredAuth>} />
                     <Route path="/dashboard" element={<RequiredAuth><Dashboard /></RequiredAuth>} >
                         <Route index element={<Welcome />} />
                         <Route path="orders" element={<Orders />} />

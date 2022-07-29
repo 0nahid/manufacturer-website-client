@@ -28,7 +28,7 @@ export default function ServicesDetails() {
         setLoading(true);
         setTimeout(() => {
             setLoading(false);
-        }, 2000);
+        }, 3000);
     }, []);
 
     if (isLoading) {
@@ -74,17 +74,17 @@ export default function ServicesDetails() {
     return (
         <>
             <Helmet>
-                <title>{productName} - Car Parts</title>
-                <meta name="description" content={productDescription} />
+                <title>{productName || "Details"} - Car Parts</title>
+                <meta name="description" content={productDescription || "Details"} />
             </Helmet>
             {
                 error ? <Page403 /> :
                     loading ? <Loading /> :
-                        <section class="text-gray-600 body-font overflow-hidden m-5 shadow-sm rounded-md p-5">
+                        <section class="text-gray-600 body-font overflow-hidden m-5  rounded-md p-5">
                             <button><Link to="/shop"><svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
                             </svg></Link></button>
-                            <div class="container px-5 py-24 mx-auto">
+                            <div class="container px-5 py-24 mx-auto bg-slate-50/60 backdrop-blur-2xl transition-colors duration-500 rounded-md">
                                 <div class="lg:w-4/5 mx-auto flex flex-wrap">
                                     <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src={image} />
                                     <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">

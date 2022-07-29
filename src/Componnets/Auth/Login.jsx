@@ -55,7 +55,7 @@ export default function Login() {
                 <title>Login - Car Parts</title>
                 <meta name="description" content="Helmet application" />
             </Helmet>
-            <div class="card w-96 ">
+            <div class="card w-96 bg-slate-50/60 backdrop-blur-2xl transition-colors duration-500">
                 <h1 className="text-center text-2xl font-bold mt-5">Login Here</h1>
                 <div class="card-body">
                     <form onSubmit={handleSubmit(onSubmit)}>

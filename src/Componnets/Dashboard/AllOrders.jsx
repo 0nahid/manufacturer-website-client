@@ -87,7 +87,7 @@ export default function AllOrders() {
                                 <title>All Orders - Car Parts</title>
                                 <meta name="description" content="Helmet application" />
                             </Helmet>
-                            <div className="container">
+                            <div className="container mx-auto flex justify-center items-center ">
                                 <table className="table table-zebra">
                                     <thead>
                                         <tr>
@@ -117,11 +117,11 @@ export default function AllOrders() {
 
                                                     {order?.price ?
                                                         order?.price && order.paid ? <span className="text-green-500">
-                                                            <button className="btn btn-sm btn-success text-white font-bold py-2 px-4 rounded">
+                                                            <button className="btn btn-xs btn-success text-white font-bold rounded">
                                                                 Paid
                                                             </button>
                                                         </span> : <span>
-                                                            <button className="btn btn-sm btn-info text-white font-bold py-2 px-4 rounded">
+                                                            <button className="btn btn-xs btn-info text-white font-bold rounded">
                                                                 Not paid
                                                             </button>
                                                         </span>
@@ -130,7 +130,7 @@ export default function AllOrders() {
 
                                                 </td>
                                                 <td>
-                                                    {order?.transactionId ? <span className="font-bold">{order?.transactionId.slice(3)}</span> : <span className="text-green-500">Not Paid</span>}
+                                                    {order?.transactionId ? <span className="font-bold text-xs">{order?.transactionId.slice(3)}</span> : <span className="text-green-500">Not Paid</span>}
                                                 </td>
                                                 {
                                                     order?.paid ? (
