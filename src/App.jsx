@@ -15,6 +15,7 @@ import ManageProducts from './Componnets/Dashboard/ManageProducts';
 import Orders from './Componnets/Dashboard/Orders';
 import Payment from './Componnets/Dashboard/Payment';
 import Welcome from './Componnets/Dashboard/Welcome';
+import Page404 from './Componnets/Errors/Page404';
 import Home from './Componnets/Home/Home';
 import Loader from './Componnets/Shared/Loader';
 import Navbar from './Componnets/Shared/Navbar';
@@ -58,6 +59,8 @@ export default function App() {
                         <Route path="users" element={<RequiredAdmin><AllUsers /></RequiredAdmin>} />
                         <Route path="manageProducts" element={<RequiredAdmin><ManageProducts /></RequiredAdmin>} />
                     </Route>
+
+                    <Route path="*" element={<Page404 />} />
                 </Routes>
 
                 <Toaster />
