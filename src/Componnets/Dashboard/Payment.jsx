@@ -30,7 +30,7 @@ export default function Payment() {
 
     return (
         <div>
-            <h1>Payment of {id}</h1>
+            {/* <h1>Payment of {id}</h1> */}
             <Helmet>
                 <title>Payment - Car Parts</title>
                 <meta name="description" content="Helmet application" />

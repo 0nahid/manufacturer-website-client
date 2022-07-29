@@ -29,7 +29,6 @@ export default function AllOrders() {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.value) {
-
                 // if confirmed, delete the order
                 axios.delete(`http://localhost:5500/api/orders/${id}`, {
                     headers: {
@@ -38,9 +37,34 @@ export default function AllOrders() {
                 })
                     .then(res => {
                         console.log(res);
+
+                        // update the availableQty of the service by checking the quantity of the order
+                        axios.get(`http://localhost:5500/api/service/${id}`, {
+                            headers: {
+                                authorization: `Bearer ${localStorage.getItem('aceessToken')}`
+                            }
+                        })
+                            .then(res => {
+                                console.log(res);
+                                const updatedAvailableQty = res.data.availableQty + parseInt(quantity);
+                                axios.patch(`http://localhost:5500/api/service/${id}`, {
+                                    availableQty: updatedAvailableQty
+                                }, {
+                                    headers: {
+                                        authorization: `Bearer ${localStorage.getItem('aceessToken')}`
+                                    }
+                                })
+                                    .then(res => {
+                                        console.log(res);
+                                        refetch();
+                                    });
+                            });
+
+                       
+
                         Swal.fire(
                             'Deleted!',
-                            'Your file has been deleted.',
+                            'Order has been deleted.',
                             'success'
                         )
                         refetch()
@@ -63,7 +87,7 @@ export default function AllOrders() {
                                 <title>All Orders - Car Parts</title>
                                 <meta name="description" content="Helmet application" />
                             </Helmet>
-                            <div className="container flex justify-center items-center">
+                            <div className="container">
                                 <table className="table table-zebra">
                                     <thead>
                                         <tr>

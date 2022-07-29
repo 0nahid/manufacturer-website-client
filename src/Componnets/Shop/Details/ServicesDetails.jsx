@@ -18,7 +18,7 @@ export default function ServicesDetails() {
     const [admin] = useAdmin(user)
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false);
-    const { data: services, refetch, isLoading, error } = useQuery(['available',], () => axios.get(`http://localhost:5500/api/services/${id}`, {
+    const { data: services, refetch, isLoading, error } = useQuery(['available',], () => axios.get(`http://localhost:5500/api/service/${id}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('aceessToken')}`
         }
@@ -30,6 +30,7 @@ export default function ServicesDetails() {
             setLoading(false);
         }, 2000);
     }, []);
+
     if (isLoading) {
         return <Loading />
     }
@@ -38,7 +39,8 @@ export default function ServicesDetails() {
     const onSubmit = data => {
         const email = user?.email;
         const userName = user?.displayName;
-        const newData = { ...data, email, userName, productName, price }
+        const totalPrice = price * data.quantity;
+        const newData = { ...data, email, userName, productName, price: totalPrice, image }
         console.log(newData);
         axios.post(`http://localhost:5500/api/orders`, newData, {
             headers: {
@@ -148,9 +150,8 @@ export default function ServicesDetails() {
                                             {
                                                 admin ? (
                                                     <div>
-                                                        <div class="flex items-center">
-                                                            <h1>Order option for site admin is not allowed !!!</h1>
-                                                        </div>
+                                                        <p>Available items : {availableQty} </p>
+                                                        <h1 className="text-error text-xl">Order option for site admin is not allowed !!!</h1>
                                                     </div>
                                                 ) : (
                                                     <>

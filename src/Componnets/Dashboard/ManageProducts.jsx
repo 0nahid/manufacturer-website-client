@@ -81,7 +81,7 @@ export default function ManageProducts() {
                                                 <td><img className='w-12 h-12' src={order?.image} alt="" /></td>
                                                 <td>{order?.productName}</td>
                                                 <td>{order?.availableQty} pices</td>
-                                                <td>{order?.orderQty}pices</td> 436
+                                                <td>{order?.orderQty}pices</td>
                                                 <td>{order?.price} $</td>
                                                 <td>
                                                     <button
