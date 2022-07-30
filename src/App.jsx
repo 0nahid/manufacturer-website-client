@@ -6,6 +6,8 @@ import Register from './Componnets/Auth/Register';
 import ResetPassword from './Componnets/Auth/ResetPassword';
 import RequiredAdmin from './Componnets/Auth/Security/RequiredAdmin';
 import RequiredAuth from './Componnets/Auth/Security/RequiredAuth';
+import BlogDetails from './Componnets/Blogs/BlogDetails';
+import Blogs from './Componnets/Blogs/Blogs';
 import Contact from './Componnets/Contact/Contact';
 import AddProduct from './Componnets/Dashboard/AddProducts';
 import AllOrders from './Componnets/Dashboard/AllOrders';
@@ -44,6 +46,8 @@ export default function App() {
                     <Route path="/" element={<Home />} />
                     <Route path="/shop" element={<Shop />} />
                     <Route path="/contact" element={<Contact />} />
+                    <Route path="/blogs" element={<Blogs />} />
+                    <Route path="/blogs/:id" element={<BlogDetails />} />
 
                     <Route path="/login" element={<Login />} />
                     <Route path="/register" element={<Register />} />

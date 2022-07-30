@@ -1,0 +1,26 @@
+[
+    {
+        "question": "What are the different ways to manage a state in a React application?",
+        "answer": "This is one of most technical question for every react developer need to know about why we don't set the state directly in react. If we are directly set the state it has faced some of issues like state does not change immediately instead it's creates pending transition states. In time If we return the state value it should return previous value. and also has replaced setState if we update made. Basically we just loss the control of state of all components etc"
+    },
+    {
+        "question": "What are the different ways to manage a state in a React application?",
+        "answer": "This is one of most technical question for every react developer need to know about why we don't set the state directly in react. If we are directly set the state it has faced some of issues like state does not change immediately instead it's creates pending transition states. In time If we return the state value it should return previous value. and also has replaced setState if we update made. Basically we just loss the control of state of all components etc."
+    },
+    {
+        "question": "How does prototypical inheritance work in React?",
+        "answer": "This is one of most technical question for every react developer need to know about why we don't set the state directly in react. If we are directly set the state it has faced some of issues like state does not change immediately instead it's creates pending transition states. In time If we return the state value it should return previous value. and also has replaced setState if we update made. Basically we just loss the control of state of all components etc."
+    },
+    {
+        "question": "Why you do not set the state directly in React?",
+        "answer": "This is one of most technical question for every react developer need to know about why we don't set the state directly in react. If we are directly set the state it has faced some of issues like state does not change immediately instead it's creates pending transition states. In time If we return the state value it should return previous value. and also has replaced setState if we update made. Basically we just loss the control of state of all components etc."
+    },
+    {
+        "question": "How will you implement a search to find products by name?",
+        "answer": "This is one of most technical question for every react developer need to know about why we don't set the state directly in react. If we are directly set the state it has faced some of issues like state does not change immediately instead it's creates pending transition states. In time If we return the state value it should return previous value. and also has replaced setState if we update made. Basically we just loss the control of state of all components etc."
+    },
+    {
+        "question": "What is a unit test? Why should write unit tests?",
+        "answer": "This is one of most technical question for every react developer need to know about why we don't set the state directly in react. If we are directly set the state it has faced some of issues like state does not change immediately instead it's creates pending transition states. In time If we return the state value it should return previous value. and also has replaced setState if we update made. Basically we just loss the control of state of all components etc."
+    }
+]

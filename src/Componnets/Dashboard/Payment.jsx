@@ -26,16 +26,16 @@ export default function Payment() {
     if (isLoading) return <Loader />
 
     const { productName, userName, price, email } = orders?.data;
-    console.log(orders?.data);
+    // console.log(orders?.data);
 
     return (
-        <div>
+        <div claSS="container mx-auto">
             {/* <h1>Payment of {id}</h1> */}
             <Helmet>
                 <title>Payment - Car Parts</title>
                 <meta name="description" content="Helmet application" />
             </Helmet>
-            <div className="card w-50 bg-base-100 shadow-xl my-12">
+            <div className="card w-50 bg-base-100 shadow-xl my-12 ">
                 <div className="card-body">
                     <p className="text-2xl font-semibold">Grettings <span className="text-success">{userName}</span> </p>
                     <h2 className="card-title font-bold text-neutral">Pay for {productName?.toUpperCase()}</h2>
