@@ -53,7 +53,7 @@ const AddProduct = () => {
             image: image,
         };
 
-        axios.post(`http://localhost:5500/api/services`, productData, {
+        axios.post(`https://car-parts-bangladesh.herokuapp.com/api/services`, productData, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('aceessToken')}`
             }

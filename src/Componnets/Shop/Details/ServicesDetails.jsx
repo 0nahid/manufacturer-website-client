@@ -18,7 +18,7 @@ export default function ServicesDetails() {
     const [admin] = useAdmin(user)
     const navigate = useNavigate()
     const [loading, setLoading] = useState(false);
-    const { data: services, refetch, isLoading, error } = useQuery(['available',], () => axios.get(`http://localhost:5500/api/service/${id}`, {
+    const { data: services, refetch, isLoading, error } = useQuery(['available',], () => axios.get(`https://car-parts-bangladesh.herokuapp.com/api/service/${id}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('aceessToken')}`
         }
@@ -42,7 +42,7 @@ export default function ServicesDetails() {
         const totalPrice = price * data.quantity;
         const newData = { ...data, email, userName, productName, price: totalPrice, image }
         console.log(newData);
-        axios.post(`http://localhost:5500/api/orders`, newData, {
+        axios.post(`https://car-parts-bangladesh.herokuapp.com/api/orders`, newData, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('aceessToken')}`
             }
@@ -53,7 +53,7 @@ export default function ServicesDetails() {
                     // navigate('/dashboard/orders')
                     const orderQuabtity = data.quantity;
                     const newAvailableQty = availableQty - orderQuabtity;
-                    axios.put(`http://localhost:5500/api/services/${id}`, { availableQty: newAvailableQty }, {
+                    axios.put(`https://car-parts-bangladesh.herokuapp.com/api/services/${id}`, { availableQty: newAvailableQty }, {
                         headers: {
                             authorization: `Bearer ${localStorage.getItem('aceessToken')}`
                         }

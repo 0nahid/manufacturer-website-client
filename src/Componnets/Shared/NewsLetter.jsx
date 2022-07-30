@@ -7,7 +7,7 @@ export default function NewsLetter() {
     const onSubmit = (data) => {
         const email = data.email;
         // console.log(`email:`, email);
-        axios.post(`http://localhost:5500/api/newsletter/${email}`, { email })
+        axios.post(`https://car-parts-bangladesh.herokuapp.com/api/newsletter/${email}`, { email })
             .then(res => {
                 // console.log(res.data.ok);
                 if (res.data.ok === 1){

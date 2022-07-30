@@ -6,7 +6,7 @@ import Swal from 'sweetalert2'
 import Loader from '../Shared/Loader'
 import Loading from '../Shared/Loading'
 export default function AllOrders() {
-    const { data, refetch, isLoading } = useQuery(['available',], () => axios.get(`http://localhost:5500/api/orders`, {
+    const { data, refetch, isLoading } = useQuery(['available',], () => axios.get(`https://car-parts-bangladesh.herokuapp.com/api/orders`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('aceessToken')}`
         }
@@ -30,7 +30,7 @@ export default function AllOrders() {
         }).then((result) => {
             if (result.value) {
                 // if confirmed, delete the order
-                axios.delete(`http://localhost:5500/api/orders/${id}`, {
+                axios.delete(`https://car-parts-bangladesh.herokuapp.com/api/orders/${id}`, {
                     headers: {
                         authorization: `Bearer ${localStorage.getItem('aceessToken')}`
                     }
@@ -39,7 +39,7 @@ export default function AllOrders() {
                         console.log(res);
 
                         // update the availableQty of the service by checking the quantity of the order
-                        axios.get(`http://localhost:5500/api/service/${id}`, {
+                        axios.get(`https://car-parts-bangladesh.herokuapp.com/api/service/${id}`, {
                             headers: {
                                 authorization: `Bearer ${localStorage.getItem('aceessToken')}`
                             }
@@ -47,7 +47,7 @@ export default function AllOrders() {
                             .then(res => {
                                 console.log(res);
                                 const updatedAvailableQty = res.data.availableQty + parseInt(quantity);
-                                axios.patch(`http://localhost:5500/api/service/${id}`, {
+                                axios.patch(`https://car-parts-bangladesh.herokuapp.com/api/service/${id}`, {
                                     availableQty: updatedAvailableQty
                                 }, {
                                     headers: {
