@@ -36,7 +36,7 @@ export default function ManageProducts() {
                     }
                 })
                     .then(res => {
-                        console.log(res);
+                        // console.log(res);
                         Swal.fire(
                             'Deleted!',
                             'Your file has been deleted.',

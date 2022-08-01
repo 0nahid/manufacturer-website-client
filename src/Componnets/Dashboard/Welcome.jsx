@@ -10,43 +10,43 @@ export default function Welcome() {
     // console.log(user?.photoURL);
     const dummpyPhoto = 'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=200';
     return (
-        <div class="flex justify-center items-center min-h-screen ">
-             <Helmet>
+        <div className="flex justify-center items-center min-h-screen ">
+            <Helmet>
                 <title>Dashboard - Car Parts</title>
                 <meta name="description" content="Helmet application" />
             </Helmet>
-            <div class="stack">
-                <div class="text-center border border-base-content card  bg-gray-50">
-                    <div class="card-body items-center">
-                        <h1 class="text-2xl font-bold">Welcome {user.displayName} <span className="badge">{
+            <div className="stack">
+                <div className="text-center border border-base-content card  bg-gray-50">
+                    <div className="card-body items-center">
+                        <h1 className="text-2xl font-bold">Welcome {user.displayName} <span className="badge">{
                             admin ? 'Admin' : 'User'
                         }</span> </h1>
-                        {/* <img src={user?.photoURL || dummpyPhoto} alt="user" class="rounded-full w-32 h-32" /> */}
+                        {/* <img src={user?.photoURL || dummpyPhoto} alt="user" className="rounded-full w-32 h-32" /> */}
                         {
                             admin ?
-                                <div class="avatar online">
-                                    <div class="w-24 rounded-full">
+                                <div className="avatar online">
+                                    <div className="w-24 rounded-full">
                                         <img src={user?.photoURL} alt="admin" />
                                     </div>
                                 </div>
                                 :
-                                <div class="avatar offline">
-                                    <div class="w-24 rounded-full">
+                                <div className="avatar offline">
+                                    <div className="w-24 rounded-full">
                                         <img src={dummpyPhoto} alt="user" />
                                     </div>
                                 </div>
                         }
 
-                        <p class="text-lg">
+                        <p className="text-lg">
                             You are logged in with {user.email}
                         </p>
                     </div>
                 </div>
-                <div class="text-center border border-base-content card  bg-primary">
-                    <div class="card-body"></div>
+                <div className="text-center border border-base-content card  bg-primary">
+                    <div className="card-body"></div>
                 </div>
-                <div class="text-center border border-base-content card  bg-info">
-                    <div class="card-body"></div>
+                <div className="text-center border border-base-content card  bg-info">
+                    <div className="card-body"></div>
                 </div>
             </div>
         </div>

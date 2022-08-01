@@ -28,7 +28,7 @@ export default function Users({ user, index, refetch }) {
                     return res.json()
                 })
                     .then(data => {
-                        console.log(data);
+                        // console.log(data);
                         if (data.matchedCount === 1) {
                             toast.success(`${email} successfully an admin`);
                             refetch();

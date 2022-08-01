@@ -72,7 +72,7 @@ export default function CheckoutForm({ id, price, email, userName }) {
         }
         else {
             setCardError('')
-            console.log(paymentIntent);
+            // console.log(paymentIntent);
             setTransactionId(paymentIntent.id)  // paymentIntent.id
             setSuccess('Payment Successful')
             // patch the transaction id to the database

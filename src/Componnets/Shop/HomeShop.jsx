@@ -22,7 +22,7 @@ export default function HomeShop() {
 
     return (
         <div>
-            <h1 className="text-center font-bold m-10 text-3xl text-primary">Parts We Provide</h1>
+            <h1 className="text-center font-bold mt-32 text-3xl text-primary">Parts We Provide</h1>
             {
                 loading ? <Loading /> : (
                     <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">

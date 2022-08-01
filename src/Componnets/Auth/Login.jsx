@@ -50,14 +50,14 @@ export default function Login() {
         return <Loading />
     }
     return (
-        <div class="flex h-screen justify-center items-center px-4 lg:px-12">
+        <div className="flex h-screen justify-center items-center px-4 lg:px-12">
             <Helmet>
                 <title>Login - Car Parts</title>
                 <meta name="description" content="Helmet application" />
             </Helmet>
-            <div class="card w-96 bg-slate-50/60 backdrop-blur-2xl transition-colors duration-500">
+            <div className="card w-96 bg-slate-50/60 backdrop-blur-2xl transition-colors duration-500">
                 <h1 className="text-center text-2xl font-bold mt-5">Login Here</h1>
-                <div class="card-body">
+                <div className="card-body">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">
@@ -99,15 +99,15 @@ export default function Login() {
                                 <span className="label-text-alt"> <p className="text-error">{errors.password?.message}</p></span>
                             </label>
                         </div>
-                        <Link to="/reset-password" className="ml-2"> <small class="font-bold">Forgot password?</small> </Link>
+                        <Link to="/reset-password" className="ml-2"> <small className="font-bold">Forgot password?</small> </Link>
                         {signInError}
 
                         <div className="form-control w-full max-w-xs">
                             <button className="btn btn-primary" type="submit">Login</button>
                         </div>
-                        <small class="font-bold"> Don't have an account?  <Link to="/register" className="ml-2"> Create an account! </Link></small>
+                        <small className="font-bold"> Don't have an account?  <Link to="/register" className="ml-2"> Create an account! </Link></small>
                     </form>
-                    <div class="divider">OR</div>
+                    <div className="divider">OR</div>
                     <div className="form-control w-full max-w-xs">
                         <button className="btn btn-outline btn-dark text-black font-bold"
                             onClick={() => signInWithGoogle()}

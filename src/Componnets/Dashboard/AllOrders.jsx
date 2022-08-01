@@ -17,7 +17,7 @@ export default function AllOrders() {
     }
 
     const cancelOrder = (id, quantity) => {
-        console.log(id, quantity);
+        // console.log(id, quantity);
         // asking confirmation with sweetalert
         Swal.fire({
             title: 'Are you sure?',
@@ -36,7 +36,7 @@ export default function AllOrders() {
                     }
                 })
                     .then(res => {
-                        console.log(res);
+                        // console.log(res);
 
                         // update the availableQty of the service by checking the quantity of the order
                         axios.get(`https://car-parts-bangladesh.herokuapp.com/api/service/${id}`, {
@@ -45,7 +45,7 @@ export default function AllOrders() {
                             }
                         })
                             .then(res => {
-                                console.log(res);
+                                // console.log(res);
                                 const updatedAvailableQty = res.data.availableQty + parseInt(quantity);
                                 axios.patch(`https://car-parts-bangladesh.herokuapp.com/api/service/${id}`, {
                                     availableQty: updatedAvailableQty
@@ -55,12 +55,12 @@ export default function AllOrders() {
                                     }
                                 })
                                     .then(res => {
-                                        console.log(res);
+                                        // console.log(res);
                                         refetch();
                                     });
                             });
 
-                       
+
 
                         Swal.fire(
                             'Deleted!',
@@ -69,7 +69,7 @@ export default function AllOrders() {
                         )
                         refetch()
                     }
-                    ).catch(err => console.log(err))
+                    ).catch(err =>  console.log(err))
 
 
 

@@ -10,6 +10,7 @@ import BlogDetails from './Componnets/Blogs/BlogDetails';
 import Blogs from './Componnets/Blogs/Blogs';
 import Contact from './Componnets/Contact/Contact';
 import AddProduct from './Componnets/Dashboard/AddProducts';
+import AddReview from './Componnets/Dashboard/AddReview';
 import AllOrders from './Componnets/Dashboard/AllOrders';
 import AllUsers from './Componnets/Dashboard/AllUsers';
 import Dashboard from './Componnets/Dashboard/Dashboard';
@@ -30,7 +31,7 @@ export default function App() {
         setLoading(true);
         setTimeout(() => {
             setLoading(false);
-        }, 3000);
+        }, 1000);
     }, []);
 
     return (
@@ -58,6 +59,7 @@ export default function App() {
                         <Route index element={<Welcome />} />
                         <Route path="orders" element={<Orders />} />
                         <Route path="payment/:id" element={<Payment />} />
+                        <Route path="addReview" element={<AddReview />} />
                         <Route path="allOrders" element={<RequiredAdmin><AllOrders /></RequiredAdmin>} />
                         <Route path="addProduct" element={<RequiredAdmin><AddProduct /></RequiredAdmin>} />
                         <Route path="users" element={<RequiredAdmin><AllUsers /></RequiredAdmin>} />

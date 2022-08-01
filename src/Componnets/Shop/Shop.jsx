@@ -20,7 +20,7 @@ export default function Shop() {
             .then(data => {
                 setServices(data);
                 // console.log(data);
-            }).catch(err => console.log(err))
+            }).catch(err =>  console.log(err))
     }, [])
     return (
         <>

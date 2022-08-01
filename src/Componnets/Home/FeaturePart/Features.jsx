@@ -22,14 +22,14 @@ export default function Features() {
         }
     ]
     return (
-        <>
-        <h1 className="text-center text-primary font-bold text-3xl mb-10 md:-mt-32">Features</h1>
+        <div className=" mb-10 md:-mt-20">
+        <h1 className="text-center text-primary font-bold text-3xl mt-10 mb-10">Features</h1>
             <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
                 {
                     features.map(feature => <FeaturesData key={feature._id} feature={feature} />)
 
                 }
             </div>
-        </>
+        </div>
     )
 }

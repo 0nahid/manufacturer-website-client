@@ -17,7 +17,7 @@ const stripePromise = loadStripe(`${process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY
 
 export default function Payment() {
     const { id } = useParams()
-    const { data: orders, refetch, isLoading, error } = useQuery(['available',], () => axios.get(`https://car-parts-bangladesh.herokuapp.com/api/order/${id}`, {
+    const { data: orders, isLoading } = useQuery(['available',], () => axios.get(`https://car-parts-bangladesh.herokuapp.com/api/order/${id}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('aceessToken')}`
         }
@@ -29,7 +29,7 @@ export default function Payment() {
     // console.log(orders?.data);
 
     return (
-        <div claSS="container mx-auto">
+        <div className="container mx-auto">
             {/* <h1>Payment of {id}</h1> */}
             <Helmet>
                 <title>Payment - Car Parts</title>

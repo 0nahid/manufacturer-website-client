@@ -3,20 +3,20 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 export default function NewsLetter() {
-    const { register, formState: { errors }, handleSubmit , reset } = useForm();
+    const { register, formState: { errors }, handleSubmit, reset } = useForm();
     const onSubmit = (data) => {
         const email = data.email;
         // console.log(`email:`, email);
         axios.post(`https://car-parts-bangladesh.herokuapp.com/api/newsletter/${email}`, { email })
             .then(res => {
                 // console.log(res.data.ok);
-                if (res.data.ok === 1){
+                if (res.data.ok === 1) {
                     toast.success('Successfully subscribed to newsletter')
                     reset();
                 }
             }
             ).catch(err => {
-                console.log(err)
+                // console.log(err)
                 toast.error('Error subscribing to newsletter')
             });
     };
@@ -25,7 +25,7 @@ export default function NewsLetter() {
         <div className='flex justify-center items-center bg-gray-200 mt-10 -mb-4 p-5'>
 
             <form onSubmit={handleSubmit(onSubmit)}>
-                <h1 class="text-2xl font-bold text-primary">Subscribe to Our Nerwsletter</h1>
+                <h1 className="text-2xl font-bold text-primary">Subscribe to Our Nerwsletter</h1>
                 <div className="form-control w-full max-w-lg">
                     <label className="label">
                         <span className="label-text">Email</span>

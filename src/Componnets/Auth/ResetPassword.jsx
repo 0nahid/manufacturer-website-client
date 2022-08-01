@@ -24,14 +24,14 @@ export default function ResetPassword() {
         navigate('/')
     }
     return (
-        <div class="flex h-screen justify-center items-center px-4 lg:px-12">
-             <Helmet>
+        <div className="flex h-screen justify-center items-center px-4 lg:px-12">
+            <Helmet>
                 <title>Reset - Car Parts</title>
                 <meta name="description" content="Helmet application" />
             </Helmet>
-            <div class="card w-96 bg-base-100 shadow-xl">
-                <div class="card-body">
-                    <h2 class="card-title">Reset Password!</h2>
+            <div className="card w-96 bg-base-100 shadow-xl">
+                <div className="card-body">
+                    <h2 className="card-title">Reset Password!</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="form-control w-full max-w-xs">
                             <label className="label">

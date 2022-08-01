@@ -11,9 +11,14 @@
     "react": "^18.2.0",
     "react-countup": "^6.3.0",
     "react-dom": "^18.2.0",
+    "react-elastic-carousel": "^0.11.5",
     "react-helmet": "^6.1.0",
     "react-hook-form": "^7.33.1",
+    "react-rating": "^2.0.5",
+    "react-reveal": "^1.2.2",
     "react-scripts": "5.0.1",
+    "react-slick": "^0.29.0",
+    "react-stars": "^2.2.5",
     "web-vitals": "^2.1.0"
   },
   "scripts": {
