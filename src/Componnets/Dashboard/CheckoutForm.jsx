@@ -12,7 +12,7 @@ export default function CheckoutForm({ id, price, email, userName }) {
     const [processing, setProcessing] = useState(false)
     // console.log(id, price, userName, email);
     useEffect(() => {
-        axios.post(`http://localhost:5500/create-payment-intent`, {
+        axios.post(`https://car-parts-bangladesh.herokuapp.com/create-payment-intent`, {
             price: price
         }, {
             headers: {
@@ -81,7 +81,7 @@ export default function CheckoutForm({ id, price, email, userName }) {
                 appointmentId: id,
                 email: email,
             }
-            axios.patch(`http://localhost:5500/api/order/${id}`, payment, {
+            axios.patch(`https://car-parts-bangladesh.herokuapp.com/api/order/${id}`, payment, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('aceessToken')}`
                 }

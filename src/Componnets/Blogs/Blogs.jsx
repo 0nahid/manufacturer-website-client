@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default function Blogs() {
     const [blogs, setBlogs] = useState([]);
     useEffect(() => {
-        axios(`http://localhost:5500/api/blogs`)
+        axios(`https://car-parts-bangladesh.herokuapp.com/api/blogs`)
             .then(res => {
                 setBlogs(res.data);
             })

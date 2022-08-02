@@ -58,7 +58,7 @@ const MyProfile = () => {
             createdAt: new Date().toDateString(),
         };
         await fetch(
-            `http://localhost:5500/api/users/me?email=${auth?.currentUser?.email}`,
+            `https://car-parts-bangladesh.herokuapp.com/api/users/me?email=${auth?.currentUser?.email}`,
             {
                 method: "PATCH",
                 headers: {
@@ -86,7 +86,7 @@ const MyProfile = () => {
         refetch,
     } = useQuery(["profileData", auth?.currentUser?.uid], () =>
         fetch(
-            `http://localhost:5500/api/users/me?email=${auth?.currentUser?.email}`,
+            `https://car-parts-bangladesh.herokuapp.com/api/users/me?email=${auth?.currentUser?.email}`,
             {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('aceessToken')}`

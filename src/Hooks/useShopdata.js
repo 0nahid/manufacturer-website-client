@@ -5,7 +5,7 @@ const useShopdata = () => {
     useEffect(() => {
         const fetchData = async () => {
             const response = await fetch(
-                "http://localhost:5500/api/services", {
+                "https://car-parts-bangladesh.herokuapp.com/api/services", {
                 method: "GET",
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('aceessToken')}`

@@ -15,7 +15,7 @@ export default function Shop() {
     }, []);
 
     useEffect(() => {
-        fetch('http://localhost:5500/api/services')
+        fetch('https://car-parts-bangladesh.herokuapp.com/api/services')
             .then(res => res.json())
             .then(data => {
                 setServices(data);

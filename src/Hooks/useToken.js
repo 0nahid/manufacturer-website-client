@@ -9,7 +9,7 @@ const useToken = user => {
         const currentUser = { email: email, uid: uid };
         // console.log(currentUser);
         if (email) {
-            axios.put(`http://localhost:5500/api/user/${email}`, currentUser)
+            axios.put(`https://car-parts-bangladesh.herokuapp.com/api/user/${email}`, currentUser)
                 .then(res => {
                     // console.log(res?.data)
                     const aceessToken = res?.data?.token;

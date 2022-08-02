@@ -1,0 +1,36 @@
+[debug] [2022-08-02T14:44:10.058Z] ----------------------------------------------------------------------
+[debug] [2022-08-02T14:44:10.060Z] Command:       /usr/bin/node /home/nahid/.npm-packages/bin/firebase deploy
+[debug] [2022-08-02T14:44:10.060Z] CLI Version:   11.4.0
+[debug] [2022-08-02T14:44:10.061Z] Platform:      linux
+[debug] [2022-08-02T14:44:10.061Z] Node Version:  v18.6.0
+[debug] [2022-08-02T14:44:10.061Z] Time:          Tue Aug 02 2022 20:44:10 GMT+0600 (Bangladesh Standard Time)
+[debug] [2022-08-02T14:44:10.061Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-08-02T14:44:10.065Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2022-08-02T14:44:10.201Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-08-02T14:44:10.201Z] > authorizing via signed-in user (nahidhassanbulbul@gmail.com)
+[debug] [2022-08-02T14:44:10.202Z] [iam] checking project car-parts-bangladesh for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-08-02T14:44:10.203Z] > refreshing access token with scopes: []
+[debug] [2022-08-02T14:44:10.205Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2022-08-02T14:44:10.205Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-08-02T14:44:10.437Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2022-08-02T14:44:10.438Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-08-02T14:44:10.448Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/car-parts-bangladesh:testIamPermissions [none]
+[debug] [2022-08-02T14:44:10.449Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/car-parts-bangladesh:testIamPermissions x-goog-quota-user=projects/car-parts-bangladesh
+[debug] [2022-08-02T14:44:10.449Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/car-parts-bangladesh:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-08-02T14:44:10.800Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2022-08-02T14:44:10.801Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2022-08-02T14:44:11.972Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/car-parts-bangladesh:testIamPermissions 200
+[debug] [2022-08-02T14:44:11.973Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/car-parts-bangladesh:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-08-02T14:44:11.976Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/car-parts-bangladesh [none]
+[debug] [2022-08-02T14:44:12.636Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/car-parts-bangladesh 200
+[debug] [2022-08-02T14:44:12.636Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/car-parts-bangladesh {"projectId":"car-parts-bangladesh","projectNumber":"448862367299","displayName":"car-parts-bangladesh","name":"projects/car-parts-bangladesh","resources":{"hostingSite":"car-parts-bangladesh"},"state":"ACTIVE","etag":"1_39fedd3b-d9ee-4726-8f68-c591c782afbe"}
+[info] 
+[info] === Deploying to 'car-parts-bangladesh'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2022-08-02T14:44:12.641Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/car-parts-bangladesh [none]
+[debug] [2022-08-02T14:44:13.291Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/car-parts-bangladesh 200
+[debug] [2022-08-02T14:44:13.291Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/car-parts-bangladesh {"projectId":"car-parts-bangladesh","projectNumber":"448862367299","displayName":"car-parts-bangladesh","name":"projects/car-parts-bangladesh","resources":{"hostingSite":"car-parts-bangladesh"},"state":"ACTIVE","etag":"1_39fedd3b-d9ee-4726-8f68-c591c782afbe"}
+[debug] [2022-08-02T14:44:13.296Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/448862367299/sites/car-parts-bangladesh/versions [none]
+[debug] [2022-08-02T14:44:13.296Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/448862367299/sites/car-parts-bangladesh/versions {"config":{"rewrites":[{"glob":"**","path":"/index.html"}]},"labels":{"deployment-tool":"cli-firebase"}}
