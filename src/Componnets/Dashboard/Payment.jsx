@@ -17,7 +17,7 @@ const stripePromise = loadStripe(`${process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY
 
 export default function Payment() {
     const { id } = useParams()
-    const { data: orders, isLoading } = useQuery(['available',], () => axios.get(`https://car-parts-bangladesh.herokuapp.com/api/order/${id}`, {
+    const { data: orders, isLoading } = useQuery(['available',], () => axios.get(`http://localhost:5500/api/order/${id}`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('aceessToken')}`
         }

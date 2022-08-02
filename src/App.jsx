@@ -15,6 +15,7 @@ import AllOrders from './Componnets/Dashboard/AllOrders';
 import AllUsers from './Componnets/Dashboard/AllUsers';
 import Dashboard from './Componnets/Dashboard/Dashboard';
 import ManageProducts from './Componnets/Dashboard/ManageProducts';
+import MyProfile from './Componnets/Dashboard/MyProfile';
 import Orders from './Componnets/Dashboard/Orders';
 import Payment from './Componnets/Dashboard/Payment';
 import Welcome from './Componnets/Dashboard/Welcome';
@@ -58,6 +59,7 @@ export default function App() {
                     <Route path="/dashboard" element={<RequiredAuth><Dashboard /></RequiredAuth>} >
                         <Route index element={<Welcome />} />
                         <Route path="orders" element={<Orders />} />
+                        <Route path="profile" element={<MyProfile />} />
                         <Route path="payment/:id" element={<Payment />} />
                         <Route path="addReview" element={<AddReview />} />
                         <Route path="allOrders" element={<RequiredAdmin><AllOrders /></RequiredAdmin>} />

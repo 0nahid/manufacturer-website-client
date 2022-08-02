@@ -24,6 +24,7 @@ export default function Dashboard() {
             <Link to="/dashboard/addReview">Add a new review</Link>
           </>
       }
+      <Link to="/dashboard/profile">My Profile</Link>
     </li>
   )
   return (

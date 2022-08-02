@@ -16,7 +16,7 @@ export default function Users({ user, index, refetch }) {
         }).then((result) => {
             if (result.value) {
 
-                fetch(`https://car-parts-bangladesh.herokuapp.com/user/admin/${email}`, {
+                fetch(`http://localhost:5500/user/admin/${email}`, {
                     method: 'PUT',
                     headers: {
                         authorization: `Bearer ${localStorage.getItem('aceessToken')}`
@@ -50,7 +50,7 @@ export default function Users({ user, index, refetch }) {
         }).then((result) => {
             if (result.value) {
 
-                fetch(`https://car-parts-bangladesh.herokuapp.com/api/user/${email}`, {
+                fetch(`http://localhost:5500/api/user/${email}`, {
                     method: 'DELETE',
                     headers: {
                         authorization: `Bearer ${localStorage.getItem('aceessToken')}`

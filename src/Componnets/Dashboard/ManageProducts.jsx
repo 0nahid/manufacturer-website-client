@@ -7,7 +7,7 @@ import Loader from '../Shared/Loader';
 import Loading from '../Shared/Loading';
 
 export default function ManageProducts() {
-    const { data, isLoading, refetch } = useQuery(['products'], () => axios.get(`https://car-parts-bangladesh.herokuapp.com/api/services`, {
+    const { data, isLoading, refetch } = useQuery(['products'], () => axios.get(`http://localhost:5500/api/services`, {
         headers: {
             authorization: `Bearer ${localStorage.getItem('aceessToken')}`
         }
@@ -30,7 +30,7 @@ export default function ManageProducts() {
         }).then((result) => {
             if (result.value) {
                 // if confirmed, delete the product
-                axios.delete(`https://car-parts-bangladesh.herokuapp.com/api/services/${id}`, {
+                axios.delete(`http://localhost:5500/api/services/${id}`, {
                     headers: {
                         authorization: `Bearer ${localStorage.getItem('aceessToken')}`
                     }

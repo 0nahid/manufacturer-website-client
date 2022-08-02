@@ -12,7 +12,7 @@ export default function Orders() {
     const [user] = useAuthState(auth);
     useEffect(() => {
         setLoading(true);
-        axios.get(`https://car-parts-bangladesh.herokuapp.com/api/orders/${user?.email}`, {
+        axios.get(`http://localhost:5500/api/orders/${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('aceessToken')}`
             }

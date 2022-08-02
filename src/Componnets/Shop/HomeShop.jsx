@@ -12,7 +12,7 @@ export default function HomeShop() {
         }, 2000);
     }, []);
     useEffect(() => {
-        fetch('https://car-parts-bangladesh.herokuapp.com/api/services')
+        fetch('http://localhost:5500/api/services')
             .then(res => res.json())
             .then(data => {
                 setServices(data);

@@ -6,7 +6,7 @@ export default function BlogDetails() {
   const { id } = useParams();
   const [blogDetails, setblogDetails] = useState({})
   useEffect(() => {
-    axios.get(`https://car-parts-bangladesh.herokuapp.com/api/blog/${id}`)
+    axios.get(`http://localhost:5500/api/blog/${id}`)
       .then(res => {
         setblogDetails(res.data)
       })

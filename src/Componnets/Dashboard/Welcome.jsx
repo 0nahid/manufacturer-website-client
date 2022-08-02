@@ -21,21 +21,7 @@ export default function Welcome() {
                         <h1 className="text-2xl font-bold">Welcome {user.displayName} <span className="badge">{
                             admin ? 'Admin' : 'User'
                         }</span> </h1>
-                        {/* <img src={user?.photoURL || dummpyPhoto} alt="user" className="rounded-full w-32 h-32" /> */}
-                        {
-                            admin ?
-                                <div className="avatar online">
-                                    <div className="w-24 rounded-full">
-                                        <img src={user?.photoURL} alt="admin" />
-                                    </div>
-                                </div>
-                                :
-                                <div className="avatar offline">
-                                    <div className="w-24 rounded-full">
-                                        <img src={dummpyPhoto} alt="user" />
-                                    </div>
-                                </div>
-                        }
+                        <img src={user?.photoURL || dummpyPhoto} alt="user" className="rounded-full w-32 h-32" />
 
                         <p className="text-lg">
                             You are logged in with {user.email}

@@ -15,12 +15,12 @@ export default function Shop() {
     }, []);
 
     useEffect(() => {
-        fetch('https://car-parts-bangladesh.herokuapp.com/api/services')
+        fetch('http://localhost:5500/api/services')
             .then(res => res.json())
             .then(data => {
                 setServices(data);
                 // console.log(data);
-            }).catch(err =>  console.log(err))
+            }).catch(err => console.log(err))
     }, [])
     return (
         <>

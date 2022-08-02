@@ -20,7 +20,7 @@ const AddReview = () => {
         };
         // console.log(reviewData);
         if (rating && reviewText) {
-            axios.post(`https://car-parts-bangladesh.herokuapp.com/api/review`, reviewData, {
+            axios.post(`http://localhost:5500/api/review`, reviewData, {
                 headers: {
                     authorization: `Bearer ${localStorage.getItem('aceessToken')}`
                 }
